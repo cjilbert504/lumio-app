@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Project } from "@/app/api/projects/route";
 
+const baseUrl = `http://localhost:${process.env.PORT ?? 3000}`;
+
 async function getProjects(): Promise<Project[]> {
-  const res = await fetch("http://localhost:3000/api/projects", { cache: "no-store" });
+  const res = await fetch(`${baseUrl}/api/projects`, { cache: "no-store" });
   return res.json();
 }
 
